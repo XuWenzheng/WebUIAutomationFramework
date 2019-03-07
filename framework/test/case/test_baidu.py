@@ -37,14 +37,14 @@ class TestBaiDu(unittest.TestCase):
                 self.sub_tearDown()
 
 
-if __name__ == '__main__':
-    #unittest.main()
-
-    report = REPORT_PATH + '\\report.html'
-    print(report)
-    with open(report, 'wb') as f:
-        runner = HTMLTestRunner(f, verbosity=2, title='栾鹏全栈', description='修改html报告')
-        runner.run(TestBaiDu('test_search'))
+# if __name__ == '__main__':
+#     #unittest.main()
+#
+#     report = REPORT_PATH + '\\report.html'
+#     print(report)
+#     with open(report, 'wb') as f:
+#         runner = HTMLTestRunner(f, verbosity=2, title='栾鹏全栈', description='修改html报告')
+#         runner.run(TestBaiDu('test_search'))
 
     # e = Email(title='百度搜索测试报告',
     #           message='这是今天的测试报告，请查收！',
