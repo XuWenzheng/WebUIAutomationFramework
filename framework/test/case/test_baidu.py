@@ -19,6 +19,7 @@ class TestBaiDu(unittest.TestCase):
         self.page = BaiDuMainPage().get(self.URL, maximize_window=False)
 
     def sub_tearDown(self):
+        self.page.save_screen_shot()
         self.page.quit()  # 清理退出
         #print("Done")
 

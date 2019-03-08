@@ -1,15 +1,6 @@
 local_url: http://www.baidu.com/
 api_url: http://www.baidu.com/
 browser: chrome
-images:
- - images/0.jpg
- - images/1.jpg
- - images/2.jpg
- - images/3.jpg
- - images/4.jpg
- - images/5.jpg
- - images/6.jpg
- - images/7.jpg
 num: 800
 log:
     file_name: test.log      # 输出日志文件名
