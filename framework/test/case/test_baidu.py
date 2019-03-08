@@ -16,7 +16,7 @@ class TestBaiDu(unittest.TestCase):
 
     def sub_setUp(self):
         # 初始页面是main page，传入浏览器类型打开浏览器
-        self.page = BaiDuMainPage(browser_type='chrome').get(self.URL, maximize_window=False)
+        self.page = BaiDuMainPage().get(self.URL, maximize_window=False)
 
     def sub_tearDown(self):
         self.page.quit()  # 清理退出

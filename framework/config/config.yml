@@ -1,5 +1,6 @@
-local_url: http://xxxxxxxx/app    # 测试网址
+local_url: http://www.baidu.com/
 api_url: http://www.baidu.com/
+browser: chrome
 images:
  - images/0.jpg
  - images/1.jpg

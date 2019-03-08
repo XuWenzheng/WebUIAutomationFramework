@@ -5,11 +5,11 @@ from utils.log import logger
 
 # 浏览器页面类，主要进行浏览器页面的控制，包括获取
 class Page(Browser):
-    def __init__(self, page=None, browser_type='firefox'):
+    def __init__(self, page=None):
         if page:
             self.driver = page.driver
         else:
-            super(Page, self).__init__(browser_type=browser_type)
+            super(Page, self).__init__()
 
     # 获取当前窗口句柄
     @property

@@ -2,6 +2,8 @@ import time
 import os
 from selenium import webdriver
 from utils.config import DRIVER_PATH, REPORT_PATH
+from utils.config import Config, DRIVER_PATH, DATA_PATH, REPORT_PATH  # 引入配置
+
 
 # 根据传入的参数选择浏览器的driver去打开对应的浏览器
 
@@ -10,7 +12,7 @@ CHROMEDRIVER_PATH = DRIVER_PATH + '\chromedriver.exe'
 IEDRIVER_PATH = DRIVER_PATH + '\IEDriverServer.exe'
 PHANTOMJSDRIVER_PATH = DRIVER_PATH + '\phantomjs.exe'
 
-TYPES = {'firefox': webdriver.Firefox, 'chrome': webdriver.Chrome, 'ie': webdriver.Ie, 'phantomjs': webdriver.PhantomJS}
+TYPES = {'firefox': webdriver.Firefox, 'chrome': webdriver.Chrome, 'ie': webdriver.Ie, 'phantomjs': webdriver.PhantomJS, 'headless': webdriver.Chrome}
 EXECUTABLE_PATH = {'firefox': 'wires', 'chrome': CHROMEDRIVER_PATH, 'ie': IEDRIVER_PATH, 'phantomjs': PHANTOMJSDRIVER_PATH}
 
 
@@ -19,8 +21,8 @@ class UnSupportBrowserTypeError(Exception):
 
 
 class Browser(object):
-    def __init__(self, browser_type='firefox'):
-        self._type = browser_type.lower()
+    def __init__(self):
+        self._type = Config().get('browser').lower()
         if self._type in TYPES:
             self.browser = TYPES[self._type]
         else:
@@ -28,7 +30,13 @@ class Browser(object):
         self.driver = None
 
     def get(self, url, maximize_window=True, implicitly_wait=30):
-        self.driver = self.browser(executable_path=EXECUTABLE_PATH[self._type])
+        if self._type == 'headless':
+            option = webdriver.ChromeOptions()
+            option.add_argument('--headless')
+            option.add_argument('--disable-gpu')
+            self.driver = self.browser(chrome_options=option)
+        else:
+            self.driver = self.browser(executable_path=EXECUTABLE_PATH[self._type])
         self.driver.get(url)
         if maximize_window:
             self.driver.maximize_window()
