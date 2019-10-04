@@ -78,12 +78,12 @@ class ExcelReader:
 
 
 if __name__ == '__main__':
-
-    y = 'E:\Test_framework\config\config.yml'
+    basePath = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
+    y = os.path.join(basePath, 'config', 'config.yml')
     reader = YamlReader(y)
     print(reader.data)
 
-    e = 'E:/Test_framework/data/baidu.xlsx'
+    e = os.path.join(basePath, 'data')
     reader = ExcelReader(e, title_line=True)
     print(reader.data)
 

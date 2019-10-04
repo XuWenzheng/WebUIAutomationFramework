@@ -1,7 +1,7 @@
 # coding=utf-8
 
 import unittest
-import utils.HTMLTestRunner
+from utils.HTMLTestRunner import HTMLTestRunner
 import time
 import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
@@ -27,7 +27,7 @@ reportFilePath = os.path.join(base_dir, 'framework\\report', reportFile)
 
 all_test_cases = create_suite()
 fp = open(reportFilePath, 'wb')
-runner = utils.HTMLTestRunner.HTMLTestRunner(stream=fp, title='UI Automation Test Report')
+runner = HTMLTestRunner(stream=fp, title='UI Automation Test Report')
 
 runner.run(all_test_cases)
 
